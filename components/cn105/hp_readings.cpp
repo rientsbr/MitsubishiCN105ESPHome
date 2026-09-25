@@ -395,7 +395,7 @@ void CN105Climate::getHVACOptionsFromResponsePacket() {
     //MSZ-LN25VG2W
     //FC 62 01 30 10 42 01 01 01 00 00 00 00 00 00 00 00 00 00 00 00 18
     //                  AP NM CL
-    // AP = air purifier (1 = on, 0 = off)
+    // AP = Lucht reiniger (1 = on, 0 = off)
     // NM = night mode (1 = on, 0 = off)
     // CL = circulator (1 = on, 0 = off) ! MIGHT BE SAME BYTE AS ECONOCOOL - NEEDS TESTING !
     heatpumpRunStates receivedRunStates{};
@@ -403,7 +403,7 @@ void CN105Climate::getHVACOptionsFromResponsePacket() {
 
     if (this->air_purifier_switch_ != nullptr) {
         receivedRunStates.air_purifier = data[1];
-        ESP_LOGD("Decoder", "[Air purifier : %s]", receivedRunStates.air_purifier ? "ON" : "OFF");
+        ESP_LOGD("Decoder", "[Lucht Reiniger : %s]", receivedRunStates.air_purifier ? "ON" : "OFF");
         if (receivedRunStates.air_purifier != this->currentRunStates.air_purifier || receivedRunStates.air_purifier != this->air_purifier_switch_->state) {
             this->currentRunStates.air_purifier = receivedRunStates.air_purifier;
             this->air_purifier_switch_->publish_state(receivedRunStates.air_purifier);
