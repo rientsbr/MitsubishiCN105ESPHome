@@ -20,7 +20,7 @@ void CN105Climate::sendFirstConnectionPacket() {
         // CONNECT a un checksum pré-calculé dans la constante; si on modifie l'octet commande, on doit le recalculer.
         packet[CONNECT_LEN - 1] = checkSum(packet, CONNECT_LEN - 1);
 
-        ESP_LOGI(LOG_CONN_TAG, "Envoi du paquet de connexion en mode %s (0x%02X)...", this->installer_mode_effective_ ? "Installateur" : "Standard", packet[1]);
+        ESP_LOGI(LOG_CONN_TAG, "Verzenden van het verbindingspakket in %s (0x%02X)...", this->installer_mode_effective_ ? "Installateur" : "Standard", packet[1]);
 
         // Détails des octets en DEBUG sur le tag de connexion
         this->hpPacketDebug(packet, CONNECT_LEN, LOG_CONN_TAG);
